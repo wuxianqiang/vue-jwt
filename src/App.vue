@@ -1,9 +1,10 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <!-- <div id="nav">
+      <router-link to="/">首页</router-link> |
+      <router-link to="/login">登录</router-link> |
+      <router-link to="/profile">我的</router-link>
+    </div> -->
     <router-view/>
   </div>
 </template>
