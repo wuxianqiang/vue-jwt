@@ -12,16 +12,16 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 import { getUser } from '../api/user.js'
 
 export default {
   name: 'home',
-  components: {
-    HelloWorld
-  },
   created () {
-    this._getUser();
+    this.$socket.init()
+  },
+  destroyed () {
+    console.log('销毁组件')
+    this.$socket.disconnect()
   },
   methods: {
     async _getUser () {

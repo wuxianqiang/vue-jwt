@@ -15,7 +15,8 @@
     "jsonwebtoken": "^8.5.1",
     "vue": "^2.6.6",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "ws": "^6.2.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.5.0",
