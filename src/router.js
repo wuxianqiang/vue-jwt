@@ -1,8 +1,45 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import List from './views/List.vue'
+import Profile from './views/Profile.vue'
+import About from './views/About.vue'
+import Login from './views/Login.vue'
+import Hello from './components/HelloWorld.vue'
 
 Vue.use(Router)
+
+export const authRoutes = [
+  {
+    path: '/',
+    name: 'Home',
+    component: Home,
+    children: [
+      {
+        path: 'list',
+        name: 'List',
+        component: List,
+        children: [
+          {
+            path: 'hello',
+            name: 'Hello',
+            component: Hello
+          }
+        ]
+      },
+      {
+        path: 'profile',
+        name: 'Profile',
+        component: Profile
+      },
+      {
+        path: 'about',
+        name: 'About',
+        component: About
+      }
+    ]
+  }
+]
 
 export default new Router({
   mode: 'history',
@@ -10,34 +47,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home,
-      children: [
-        {
-          path: 'profile',
-          name: 'Profile',
-          // route level code-splitting
-          // this generates a separate chunk (about.[hash].js) for this route
-          // which is lazy-loaded when the route is visited.
-          component: () => import(/* webpackChunkName: "profile" */ './views/Profile.vue')
-        },
-        {
-          path: 'about',
-          name: 'about',
-          // route level code-splitting
-          // this generates a separate chunk (about.[hash].js) for this route
-          // which is lazy-loaded when the route is visited.
-          component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-        }
-      ]
+      name: 'Home',
+      component: Home
     },
     {
       path: '/login',
       name: 'Login',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "login" */ './views/Login.vue')
+      component: Login
     }
   ]
 })

@@ -1,27 +1,25 @@
 <template>
   <div class="home">
-    <div id="nav">
-      <router-link to="/">首页</router-link> |
-      <router-link to="/login">登录</router-link> |
-      <router-link to="/profile">我的</router-link>
-      <router-view/>
-    </div>
-    首页
+    <layout></layout>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import { getUser } from '../api/user.js'
+import Layout from './Layout'
 
 export default {
+  components: {
+    Layout
+  },
   name: 'home',
   created () {
-    this.$socket.init()
+    // this.$socket.init()
   },
   destroyed () {
-    console.log('销毁组件')
-    this.$socket.disconnect()
+    // this.$socket.disconnect()
   },
   methods: {
     async _getUser () {

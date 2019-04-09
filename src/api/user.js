@@ -6,3 +6,10 @@ export const getUser = () => {
     method: 'get'
   })
 }
+
+export const getMenu = () => {
+  return ajax.request({
+    url: '/menu',
+    method: 'get'
+  })
+}

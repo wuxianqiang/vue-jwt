@@ -35,6 +35,19 @@ app.get('/user', (req, res) => {
   res.json('hello')
 })
 
+const menuList = [
+  {pid: -1, id: 1, name: '商品', path: '/', auth: 'Home'},
+  {pid: 1, id: 2, name: '列表', path: '/list', auth: 'List'},
+  {pid: 2, id: 6, name: '欢迎', path: '/list/hello', auth: 'Hello'},
+  {pid: 1, id: 3, name: '推荐', path: '/profile', auth: 'Profile'},
+  {pid: 1, id: 4, name: '关于', path: '/about', auth: 'About'},
+  {pid: -1, id: 5, name: '登录', path: '/login', auth: 'Login'},
+]
+
+app.get('/menu', (req, res) => {
+  res.json(menuList)
+})
+
 app.listen(3000, () => {
   console.log('server start')
 });

@@ -9,6 +9,17 @@ Vue.config.productionTip = false
 
 Vue.use(ElementUI)
 
+router.beforeEach(async (to, from, next) => {
+  if (!store.state.hasRules) {
+    await store.dispatch('getMenuList')
+    let list = await store.dispatch('getAuthRoute')
+    router.addRoutes(list)
+    next({...to, replace:true});
+  } else {
+    next()
+  }
+})
+
 new Vue({
   router,
   store,
