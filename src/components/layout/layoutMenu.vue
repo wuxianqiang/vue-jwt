@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="menu">
     <el-menu
       :router="true"
       mode="horizontal"
@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import ReSubMenu from './ReSubmenu'
+import ReSubMenu from './layoutMenuItem'
 import { mapState } from 'vuex';
 export default {
   components: {
@@ -36,7 +36,7 @@ export default {
     ...mapState(['menuList'])
   },
   created () {
-    console.log(this.$route.path)
+    console.log(this.menuList)
   }
 }
 </script>

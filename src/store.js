@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import modules from './module'
 import { getMenu } from './api/user'
-import { authRoutes } from './router'
+import { authRoutes } from './router/authRoutes'
 
 Vue.use(Vuex)
 

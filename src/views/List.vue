@@ -1,6 +1,5 @@
 <template>
-  <div class="about">
-    <h1>列表</h1>
+  <div class="list">
     <router-view></router-view>
   </div>
 </template>

@@ -1,18 +1,24 @@
 <template>
   <div class="home">
-    <layout></layout>
-    <router-view></router-view>
+    <div class="home-header">
+      <layout-bread></layout-bread>
+      <layout-menu></layout-menu>
+    </div>
+    <div class="home-container">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import { getUser } from '../api/user.js'
-import Layout from './Layout'
+import LayoutMenu from '@/components/layout/layoutMenu'
+import LayoutBread from '@/components/layout/layoutBread'
 
 export default {
   components: {
-    Layout
+    LayoutMenu,
+    LayoutBread
   },
   name: 'home',
   created () {
@@ -29,3 +35,18 @@ export default {
   }
 }
 </script>
+
+<style lang="less" scoped>
+.home {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  &-container {
+    flex: 1;
+    overflow: auto;
+    background: #f5f5f7;
+  }
+}
+</style>

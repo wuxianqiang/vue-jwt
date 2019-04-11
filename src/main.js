@@ -1,23 +1,34 @@
 import Vue from 'vue'
 import App from './App.vue'
-import router from './router'
+import router from './router/defaultRoutes'
 import store from './store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import socket from './socket'
 Vue.config.productionTip = false
+import '@/common/css/reset.css'
 
 Vue.use(ElementUI)
-
-router.beforeEach(async (to, from, next) => {
-  if (!store.state.hasRules) {
-    await store.dispatch('getMenuList')
-    let list = await store.dispatch('getAuthRoute')
-    router.addRoutes(list)
-    next({...to, replace:true});
-  } else {
-    next()
-  }
+Vue.directive('phone', {
+  update (el, bindings, vnode) {
+    let ctx = vnode.context
+    el.value = ctx[bindings.expression]
+  },
+  inserted (el) {
+    el.focus()
+  },
+  bind (el, bindings, vnode) {
+    let ctx = vnode.context;
+    el.addEventListener('input', (e) => {
+      let val = e.target.value.replace(/[^\d]/g, '')
+      if (val.length > 11) {
+        val = val.slice(0, 11)
+      }
+      ctx[bindings.expression] = val
+      el.value = val
+    })
+    el.value = ctx[bindings.expression]
+  },
 })
 
 new Vue({

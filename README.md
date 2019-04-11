@@ -29,9 +29,11 @@ yarn run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### 主要功能
-1. websocket组件
-2. 路由权限
+1. 手写websocket组件
+2. 设置路由权限
 3. axios封装
 4. express后台
-5. 递归组件
+5. 导航的递归组件
 6. vuex状态分层
+7. 自定义指令
+8. 面包屑导航

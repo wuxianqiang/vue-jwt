@@ -1,32 +1,22 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">首页</router-link> |
-      <router-link to="/login">登录</router-link> |
-      <router-link to="/profile">我的</router-link>
-    </div> -->
     <router-view/>
   </div>
 </template>
 
 <style>
+.icon {
+  width: 1em; height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+html, body {
+  width: 100%;
+  height: 100%;
+}
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+  width: 100%;
+  height: 100%;
 }
 </style>
