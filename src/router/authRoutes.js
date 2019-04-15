@@ -2,7 +2,7 @@ import Home from '@/views/Home.vue'
 import List from '@/views/List.vue'
 import Profile from '@/components/profile/profile.vue'
 import About from '@/components/about/about.vue'
-import Hello from '@/components/HelloWorld.vue'
+import Calendar from '@/components/calendar/calendar.vue'
 
 export const authRoutes = [
   {
@@ -21,11 +21,11 @@ export const authRoutes = [
         component: List,
         children: [
           {
-            path: 'hello',
-            name: 'Hello',
-            component: Hello,
+            path: 'calendar',
+            name: 'Calendar',
+            component: Calendar,
             meta: {
-              bread: '欢迎'
+              bread: '日历'
             }
           }
         ],

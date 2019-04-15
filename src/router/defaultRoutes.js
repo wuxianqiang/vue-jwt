@@ -30,7 +30,17 @@ router.beforeEach(async (to, from, next) => {
     router.addRoutes(list)
     next({...to, replace: true});
   } else {
-    next()
+    if (to.name === 'Login') {
+      next()
+    } else {
+      store.dispatch('user/getUserInfo').then((res) => {
+        if (res) {
+          next()
+        } else {
+          next({ path: '/login' })
+        }
+      })
+    }
   }
 })
 

@@ -47,6 +47,7 @@ export default {
     flex: 1;
     overflow: auto;
     background: #f5f5f7;
+    padding: 20px;
   }
 }
 </style>

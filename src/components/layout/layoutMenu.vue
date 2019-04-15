@@ -36,7 +36,6 @@ export default {
     ...mapState(['menuList'])
   },
   created () {
-    console.log(this.menuList)
   }
 }
 </script>

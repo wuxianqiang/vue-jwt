@@ -38,6 +38,8 @@ export default {
   },
   methods: {
     handleLogin () {
+      console.log('处理登录')
+      sessionStorage.setItem('user_id', this.tel)
       this.$router.replace({path: '/profile'})
     }
   }
