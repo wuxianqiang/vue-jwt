@@ -46,8 +46,10 @@
                 <span v-if="title.filter">
                   {{title.filter(value)}}
                 </span>
-                <span v-else>
-                  {{value[title.key]}}
+                <span v-else >
+                  <slot :name="title.key" :row="value">
+                    {{value[title.key]}}
+                  </slot>
                 </span>
               </span>
               <span v-if="title.key==='html'">

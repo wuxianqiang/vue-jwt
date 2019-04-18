@@ -5,6 +5,11 @@
         <a class="link link-add">表格</a>
       </div>
       <easy-table :dataList="dataList" :titleList="titleList">
+        <template v-slot:id="slotProps">
+          <h1>
+            {{slotProps.row.id}}
+          </h1>
+        </template>
       </easy-table>
       <profile-dialog
         ref="dialog"
