@@ -3,6 +3,7 @@ import List from '@/views/List.vue'
 import Profile from '@/components/profile/profile.vue'
 import About from '@/components/about/about.vue'
 import Calendar from '@/components/calendar/calendar.vue'
+import Log from '@/components/log/log.vue'
 
 export const authRoutes = [
   {
@@ -10,10 +11,19 @@ export const authRoutes = [
     name: 'Home',
     component: Home,
     children: [
-      {
+      { 
         path: 'profile',
         name: 'Profile',
         component: Profile
+      },
+      { 
+        path: 'profile/:id',
+        name: 'Log',
+        component: Log,
+        meta: {
+          bread: '日志',
+          hidden: true
+        }
       },
       {
         path: 'list',

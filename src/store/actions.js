@@ -9,7 +9,7 @@ let formatMenuList = (menuList) => {
         arr.push(menu.auth);
         let children = r(menu.id)
         menu.children = children.length ? children: null;
-        return true
+        return menu.name
       }
     })
   }
@@ -35,6 +35,7 @@ const actions = {
     let data = await getMenu()
     let { menuList, authList } = formatMenuList(data)
     commit('setMenuList', menuList)
+    console.log(authList)
     commit('setAuthList', authList)
   },
   async getAuthRoute({state}) {

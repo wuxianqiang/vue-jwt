@@ -38,6 +38,7 @@ app.get('/user', (req, res) => {
 const menuList = [
   {pid: -1, id: 1, name: '商品', path: '/', auth: 'Home'},
   {pid: 1, id: 3, name: '首页', path: '/profile', auth: 'Profile'},
+  {pid: 1, id: 7, name: '', path: '/profile/:id', auth: 'Log'},
   {pid: 1, id: 2, name: '列表', path: '/list', auth: 'List'},
   {pid: 2, id: 6, name: '日历', path: '/list/calendar', auth: 'Calendar'},
   {pid: 1, id: 4, name: '关于', path: '/about', auth: 'About'},

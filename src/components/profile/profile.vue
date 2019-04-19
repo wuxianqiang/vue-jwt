@@ -18,6 +18,7 @@
         @handleClose="handleClose"
         :title="title">
       </profile-dialog>
+      <span @click="handleClick">跳转</span>
     </div>
   </div>
 </template>
@@ -128,6 +129,9 @@ export default {
         count: ''
       }
       this.cache = null
+    },
+    handleClick () {
+      this.$router.push({name:'Log',params:{id:100}})
     }
   }
 }
