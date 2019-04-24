@@ -35,7 +35,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 4. express后台
 5. 导航的递归组件
 6. vuex状态分层
-7. 自定义指令
+7. 自定义指令（验证手机号码的指令）
 8. 面包屑导航
 9. 解决跨域问题（CORS）
 10. session登录验证

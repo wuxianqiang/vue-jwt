@@ -3,33 +3,20 @@ import App from './App.vue'
 import router from './router/defaultRoutes'
 import store from './store'
 import ElementUI from 'element-ui'
+import VCharts from 'v-charts'
 import 'element-ui/lib/theme-chalk/index.css'
 import socket from './socket'
+import * as filters from './filters'
+import * as directives from './directives'
 Vue.config.productionTip = false
 import '@/common/css/reset.css'
+// 注册过滤器
+Object.keys(filters).forEach(k => Vue.filter(k, filters[k]));
+// 注册指令
+Object.keys(directives).forEach(k => Vue.directive(k, directives[k]));
 
 Vue.use(ElementUI)
-Vue.directive('phone', {
-  update (el, bindings, vnode) {
-    let ctx = vnode.context
-    el.value = ctx[bindings.expression]
-  },
-  inserted (el) {
-    el.focus()
-  },
-  bind (el, bindings, vnode) {
-    let ctx = vnode.context;
-    el.addEventListener('input', (e) => {
-      let val = e.target.value.replace(/[^\d]/g, '')
-      if (val.length > 11) {
-        val = val.slice(0, 11)
-      }
-      ctx[bindings.expression] = val
-      el.value = val
-    })
-    el.value = ctx[bindings.expression]
-  },
-})
+Vue.use(VCharts)
 
 new Vue({
   router,

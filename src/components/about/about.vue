@@ -2,20 +2,6 @@
   <div class="about">
     <a class="link  link-add">复制</a>
     <copy-input></copy-input>
-    <el-select
-      v-model="value11"
-      multiple
-      collapse-tags
-      filterable
-      style="margin-left: 20px;"
-      placeholder="请选择">
-      <el-option
-        v-for="item in options"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value">
-      </el-option>
-    </el-select>
   </div>
 </template>
 

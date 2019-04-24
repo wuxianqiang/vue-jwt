@@ -1,20 +1,20 @@
-import Home from '@/views/Home.vue'
 import List from '@/views/List.vue'
-import Profile from '@/components/profile/profile.vue'
+import Home from '@/views/home/home.vue'
 import About from '@/components/about/about.vue'
 import Calendar from '@/components/calendar/calendar.vue'
 import Log from '@/components/log/log.vue'
+import Layout from '@/components/layout/layout.vue'
 
 export const authRoutes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
+    name: 'Layout',
+    component: Layout,
     children: [
       { 
-        path: 'profile',
-        name: 'Profile',
-        component: Profile
+        path: 'home',
+        name: 'Home',
+        component: Home
       },
       { 
         path: 'profile/:id',

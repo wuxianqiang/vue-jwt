@@ -1,6 +1,4 @@
-import Vue from 'vue'
-
-Vue.directive('phone', {
+export const phone = {
   update (el, bindings, vnode) {
     let ctx = vnode.context
     el.value = ctx[bindings.expression]
@@ -19,5 +17,5 @@ Vue.directive('phone', {
       el.value = val
     })
     el.value = ctx[bindings.expression]
-  },
-})
+  }
+}

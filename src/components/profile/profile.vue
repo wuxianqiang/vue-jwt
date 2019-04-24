@@ -3,6 +3,7 @@
     <div class="profile-header">
       <div>
         <a class="link link-add">表格</a>
+        <a class="link link-add" @click="handleAdd">添加</a>
       </div>
       <easy-table :dataList="dataList" :titleList="titleList">
         <template v-slot:id="slotProps">
@@ -49,7 +50,7 @@ export default {
       list.push({
         id: i,
         sex: Math.random() > 0.5 ? 0 : 1,
-        count: 100
+        count: 100 + i
       })
     }
     this.dataList = list
@@ -114,6 +115,11 @@ export default {
       this.$refs.dialog.show()
     },
 
+    handleAdd () {
+      this.title = '添加用户'
+      this.$refs.dialog.show()
+    },
+
     handleSubmit () {
       let { id, sex, count } = this.ruleForm
       if (this.cache > -1) {
@@ -123,12 +129,12 @@ export default {
       }
     },
     handleClose () {
+      this.cache = -1
       this.ruleForm = {
-        id: '',
-        sex: 0,
+        id: this.dataList.length + 1,
+        sex: 1,
         count: ''
       }
-      this.cache = null
     },
     handleClick () {
       this.$router.push({name:'Log',params:{id:100}})
@@ -138,8 +144,6 @@ export default {
 </script>
 
 <style lang="less">
-.profile {
-}
 .link {
   color: #0a844b;
   font-weight: 800;

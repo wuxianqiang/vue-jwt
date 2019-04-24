@@ -2,8 +2,10 @@
   <div class="menu">
     <el-menu
       :router="true"
-      mode="horizontal"
-      :default-active="$route.path">
+      :default-active="$route.path"
+      background-color="#2c2f43"
+      text-color="#b5b4c2"
+      active-text-color="#fff">
       <template v-for="m in menuList">
         <template v-if="m.children">
           <template v-for="item in m.children">
@@ -22,6 +24,7 @@
         </el-menu-item>
       </template>
     </el-menu>
+    <div class="red">ss</div>
   </div>
 </template>
 
@@ -39,3 +42,9 @@ export default {
   }
 }
 </script>
+
+<style lang="less">
+  .el-menu-item.is-active {
+    background-color: #232638 !important;
+  }
+</style>

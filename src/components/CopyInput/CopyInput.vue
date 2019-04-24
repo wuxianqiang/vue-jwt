@@ -7,9 +7,8 @@
         ref="input"
         readonly
         v-model="link">
-      <el-tooltip class="item" effect="dark" :content="text" placement="bottom">
         <i class="el-icon-document copy-input__icon" @click="handleClick" @mouseleave="handleLeave"></i>
-      </el-tooltip>
+      
     </div>
   </div>
 </template>
@@ -26,12 +25,9 @@ export default {
     handleClick () {
       this.$refs.input.select()
       document.execCommand('copy')
-      this.text = '复制成功'
+      this.$message.success('复制成功')
     },
     handleLeave () {
-      setTimeout(() => {
-        this.text = '点击复制'
-      }, 500);
     }
   }
 }

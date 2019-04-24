@@ -2,7 +2,10 @@
   <div class="bread">
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <template v-for="(item, index) in $route.matched">
-        <el-breadcrumb-item :to="{ path: item.meta.url || item.path }" :key="index" v-if="item.meta&&item.meta.bread">
+        <el-breadcrumb-item
+          :to="{ path: item.meta.url || item.path }"
+          :key="index"
+          v-if="item.meta&&item.meta.bread">
           {{ item.meta.bread }}
         </el-breadcrumb-item>
       </template>
@@ -11,21 +14,8 @@
   </div>
 </template>
 
-<script>
-export default {
-  created () {
-  }
-}
-</script>
-
-<style lang="less">
+<style lang="less" scoped>
 .bread {
-  background: #0a844b;
-  color: #fff;
-  padding: 5px;
-  .el-breadcrumb__inner {
-    color: #fff !important;
-    font-size: 12px;
-  }
+  padding: 20px 0 0 20px;
 }
 </style>
