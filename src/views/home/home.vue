@@ -1,101 +1,82 @@
 <template>
   <div class="statistics">
     <div class="statistics-notice">
-      <h1 class="statistics-title">JavaScript Tutorials and Insights</h1>
-      <p>Learn JavaScript with insight and tutorials from top JavaScript experts, and keep up with the latest trends and developments in the JavaScript community</p>
+      <h1 class="statistics-title">Vue.js 是什么</h1>
+      <p>
+        Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。
+        与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。
+        Vue 的核心库只关注视图层，
+        不仅易于上手，还便于与第三方库或既有项目整合。
+        另一方面，当与现代化的工具链以及各种支持类库结合使用时，
+        Vue 也完全能够为复杂的单页应用提供驱动。
+      </p>
     </div>
     <div class="statistics-wrapper">
-      <h1 class="statistics-title">统计报表</h1>
-      <statistics></statistics>
+      <iframe
+        src="https://npmcharts.com/compare/vue?minimal=true"
+        frameborder="0"
+        height="425"
+        width="100%">
+      </iframe>
     </div>
-    <div class="statistics-article">
-      <div class="statistics-wrapper statistics-left">
-        <h2 class="statistics-title">热门话题</h2>
-        <ul>
-          <li
-            class="statistics-list"
-            v-for="(item, index) in list"
-            :key="index"
-            :class="{'statistics-list__active': index !== list.length - 1}">
-            <div class="statistics-list__img">
-              <img :src="item.src" alt="react" width="40" height="40">
-            </div>
-            <div>
-              <h3 class="statistics-list__title">{{ item.title }}</h3>
-              <p class="statistics-list__text">{{ item.text }}</p>
-              <p>{{ item.content }}</p>
-            </div>
-            <div class="statistics-list__star">
-              128K
-            </div>
-          </li>
-        </ul>
+    <div class="statistics-chart">
+      <template v-for="(item, index) in list">
+        <div class="statistics-analysis" :key="item.id">
+          <div class="statistics-analysis__wrapper">
+            <svg aria-hidden="true" class="statistics-analysis__icon" :style="{fill: item.fill}">
+              <path fill-rule="evenodd" :d="item.path">
+              </path>
+            </svg>
+          </div>
+          <div>
+            <div>{{ item.title }}</div>
+            <div class="statistics-analysis__count">{{ item.count }}</div>
+          </div>
+        </div>
+        <div  :key="index" class="statistics-chart__line" v-if="index < list.length - 1"></div>
+      </template>
+    </div>
+    <div class="statistics-chart">
+      <div class="statistics-chart__item">
+        <iframe
+          src="https://npmcharts.com/compare/react?minimal=true"
+          frameborder="0"
+          height="400"
+          width="100%">
+        </iframe>
       </div>
-      <div class="statistics-wrapper statistics-right">
-        <h2 class="statistics-title">热门话题</h2>
-        <ul>
-          <li
-            class="statistics-list"
-            v-for="(item, index) in list"
-            :key="index"
-            :class="{'statistics-list__active': index !== list.length - 1}">
-            <div class="statistics-list__img">
-              <img :src="item.src" alt="react" width="40" height="40">
-            </div>
-            <div>
-              <h3 class="statistics-list__title">{{ item.title }}</h3>
-              <p class="statistics-list__text">{{ item.text }}</p>
-              <p>{{ item.content }}</p>
-            </div>
-            <div>
-              128K
-            </div>
-          </li>
-        </ul>
+      <div class="statistics-chart__line"></div>
+      <div class="statistics-chart__item">
+        <iframe
+          src="https://npmcharts.com/compare/angular?minimal=true"
+          frameborder="0"
+          height="400"
+          width="100%">
+        </iframe>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Statistics from '@/components/statistics/statistics'
+import { geStatistics } from '@/api/api'
 
 export default {
-  components: {
-    Statistics
-  },
-
   data () {
-    return {}
+    return {
+      list: []
+    }
   },
 
   created () {
-    this.list = [
-      {
-        src: 'https://lite-cdn.codementor.io/static/images/categories/lang_react_color.png',
-        title: 'React',
-        text: '用于构建用户界面的 JavaScript 库',
-        content: 'React 可以非常轻松地创建用户交互界面。为你应用的每一个状态设计简洁的视图。'
-      },
-      {
-        src: 'https://lite-cdn.codementor.io/static/images/categories/lang_angular_color.png',
-        title: 'Angular',
-        text: '用于构建用户界面的 JavaScript 库',
-        content: 'React 可以非常轻松地创建用户交互界面。为你应用的每一个状态设计简洁的视图。'
-      },
-      {
-        src: 'https://lite-cdn.codementor.io/static/images/categories/lang_js_color@2x.png',
-        title: 'JavaScript',
-        text: '用于构建用户界面的 JavaScript 库',
-        content: 'React 可以非常轻松地创建用户交互界面。为你应用的每一个状态设计简洁的视图。'
-      },
-      {
-        src: 'https://lite-cdn.codementor.io/static/images/categories/lang_nodejs_color.png',
-        title: 'Node.js',
-        text: '用于构建用户界面的 JavaScript 库',
-        content: 'React 可以非常轻松地创建用户交互界面。为你应用的每一个状态设计简洁的视图。'
-      }
-    ]
+    this._geStatistics()
+  },
+
+  methods: {
+    async _geStatistics () {
+      let { data: { list } } = await geStatistics()
+      this.list = list
+    }
   }
 }
 </script>
@@ -106,13 +87,14 @@ export default {
       padding: 20px;
       background: #fff;
       border-radius: 5px;
-      font-size: 20px;
+      font-size: 18px;
       margin-bottom: 30px;
     }
 
     &-title {
-      font-size: 36px;
+      font-size: 18px;
       margin-bottom: 20px;
+      font-weight: 900;
     }
 
     &-wrapper {
@@ -122,57 +104,51 @@ export default {
       margin-bottom: 30px;
     }
 
-    &-list {
+    &-analysis {
+      flex: 1;
+      background: #fff;
+      height: 100px;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &__icon {
+        width: 15px;
+        height: 16px;
+        transform: scale(3.5);
+        transform-origin: top left;
+      }
+
+      &__wrapper {
+        width: 60px;
+        height: 60px;
+        margin-right: 15px;
+      }
+
+      &__count {
+        margin-top: 10px;
+        font-size: 24px;
+        color: #5e5e62;
+      }
+    }
+
+    &-chart {
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
 
-      &__img {
-        width: 84px;
-        height: 84px;
-        flex: 0 0 84px;
-        margin-right: 10px;
-        background: #eee;
-        display: flex;
-        border-radius: 5px;
-        align-items: center;
-        justify-content: center;
+      &__line {
+        width: 30px;
+        flex: 0 0 30px;
       }
 
-      &__active {
-        margin-bottom: 15px;
+      &__item {
+        padding: 20px;
+        background: #fff;
+        flex: 1;
       }
-
-      &__title {
-        font-size: 18px;
-        line-height: 36px;
-      }
-
-      &__text {
-        line-height: 24px;
-        font-size: 14px;
-      }
-
-      &__star {
-        width: 90px;
-        flex: 0 0 90px;
-        margin-left: 10px;
-      }
-    }
-
-    &-article {
-      width: 100%;
-      display: flex;
-    }
-
-    &-left {
-      margin-right: 18px;
-      flex: 1;
-    }
-
-    &-right {
-      margin-left: 18px;
-      flex: 1;
     }
   }
 </style>

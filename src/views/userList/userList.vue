@@ -12,13 +12,13 @@
           </h1>
         </template>
       </easy-table>
-      <profile-dialog
+      <list-dialog
         ref="dialog"
         v-model="ruleForm"
         @handleSubmit="handleSubmit"
         @handleClose="handleClose"
         :title="title">
-      </profile-dialog>
+      </list-dialog>
       <span @click="handleClick">跳转</span>
     </div>
   </div>
@@ -26,12 +26,12 @@
 
 <script>
 import EasyTable from '@/components/EasyTable/EasyTable'
-import ProfileDialog from './ProfileDialog'
+import ListDialog from './userListDialog'
 
 export default {
   components: {
     EasyTable,
-    ProfileDialog
+    ListDialog
   },
   data () {
     return {

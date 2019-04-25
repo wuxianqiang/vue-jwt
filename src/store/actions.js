@@ -32,10 +32,9 @@ let formatAuthList = (authList) => {
 
 const actions = {
   async getMenuList({commit}) {
-    let data = await getMenu()
-    let { menuList, authList } = formatMenuList(data)
+    let {data: { list }} = await getMenu()
+    let { menuList, authList } = formatMenuList(list)
     commit('setMenuList', menuList)
-    console.log(authList)
     commit('setAuthList', authList)
   },
   async getAuthRoute({state}) {

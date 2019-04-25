@@ -3,7 +3,8 @@ import axios from 'axios';
 class AjaxRequest {
   // baseURL
   constructor () {
-    this.baseURL = process.env.NODE_ENV === 'production' ? '/' : 'http://localhost:3000';
+    // this.baseURL = process.env.NODE_ENV === 'production' ? '/' : 'http://localhost:3000';
+    this.baseURL = 'https://easy-mock.com/mock/5cbeb6de8968371da414c81b/admin';
     this.timeout = 3000; // 超时时间
   }
   merge (options) {

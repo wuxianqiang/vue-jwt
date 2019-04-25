@@ -40,7 +40,7 @@ export default {
     handleLogin () {
       console.log('处理登录')
       sessionStorage.setItem('user_id', this.tel)
-      this.$router.replace({path: '/profile'})
+      this.$router.replace({path: '/home'})
     }
   }
 }

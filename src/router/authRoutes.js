@@ -1,9 +1,10 @@
-import List from '@/views/List.vue'
+import List from '@/views/list/list.vue'
 import Home from '@/views/home/home.vue'
 import About from '@/components/about/about.vue'
-import Calendar from '@/components/calendar/calendar.vue'
+// import Calendar from '@/components/calendar/calendar.vue'
 import Log from '@/components/log/log.vue'
 import Layout from '@/components/layout/layout.vue'
+import UserList from '@/views/userList/userList.vue'
 
 export const authRoutes = [
   {
@@ -31,16 +32,16 @@ export const authRoutes = [
         component: List,
         children: [
           {
-            path: 'calendar',
-            name: 'Calendar',
-            component: Calendar,
+            path: 'userList',
+            name: 'UserList',
+            component: UserList,
             meta: {
-              bread: '日历'
+              bread: '表格'
             }
           }
         ],
         meta: {
-          bread: '列表',
+          bread: '组件',
         }
       },
       {
@@ -54,7 +55,7 @@ export const authRoutes = [
     ],
     meta: {
       bread: '首页',
-      url: '/profile'
+      url: '/home'
     }
   }
 ]

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <svg class="icon" aria-hidden="true">
-        <use :xlink:href="href" ></use>
+    <svg :style="cls" aria-hidden="true">
+      <use :xlink:href="href" ></use>
     </svg>
   </div>
 </template>
@@ -12,19 +12,29 @@ export default {
     href: {
       type: String,
       default: ''
+    },
+    width: {
+      type: String,
+      default: '30'
+    },
+    height: {
+      type: String,
+      default: '30'
+    },
+    fill: {
+      type: String,
+      default: '#8d8ca0'
     }
   },
 
-  created() {
-    console.log(this.href)
+  computed: {
+    cls () {
+      return {
+        width: `${this.width}px`,
+        height: `${this.height}px`,
+        fill: this.fill
+      }
+    }
   }
 }
 </script>
-
-<style lang="less" scoped>
-  .icon {
-    width: 30px;
-    height: 30px;
-    fill: #8d8ca0;
-  }
-</style>

@@ -1,10 +1,8 @@
 <template>
   <div class="home">
     <div class="home-header">
-      <!-- <layout-bread></layout-bread>
-      <layout-menu></layout-menu> -->
       <div class="home-header__logo">
-        Futani
+        Hello!
       </div>
       <div class="home-header__nav">
         <icon href="#iconxitongguanlitianchong"></icon>
@@ -13,7 +11,23 @@
     <div class="home-container">
       <div class="home-container__menu">
         <div class="home-container__info">
-          
+          <div class="home-container__user">
+            <img src="./avatar.jpg" alt="" width="70" height="70" class="home-container__user--img">
+            <el-dropdown trigger="click" class="home-container__user--name">
+              <span class="el-dropdown-link">
+                Qiang<i class="el-icon-arrow-down el-icon--right"></i>
+              </span>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item icon="el-icon-circle-close-outline">退出登录</el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
+          </div>
+          <div class="home-container__icon">
+            <icon href="#iconyinzhang" width="40" height="40"></icon>
+            <icon href="#iconfangke" width="40" height="40"></icon>
+            <icon href="#iconfaxian" width="40" height="40"></icon>
+            <icon href="#icontupian" width="40" height="40"></icon>
+          </div>
         </div>
         <div>
           <layout-menu></layout-menu>
@@ -103,6 +117,8 @@ export default {
     }
 
     &__info {
+      padding: 30px;
+      box-sizing: border-box;
       width: 300px;
       height: 210px;
       background: #3f435a;
@@ -117,6 +133,46 @@ export default {
     &__view {
       padding: 40px 30px;
     }
+
+    &__user {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &--img {
+        border-radius: 50%;
+      }
+      &--name {
+        color: #eceef2;
+      }
+      .el-dropdown {
+        font-size: 18px;
+      }
+    }
+
+    &__icon {
+      margin-top: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
   }
 }
+</style>
+
+<style lang="less">
+.el-dropdown-menu {
+  background-color: #2c2f43 !important;
+  border-color: #2c2f43 !important;
+}
+
+.popper__arrow::after {
+  border-color: #2c2f43 !important;
+}
+
+.el-dropdown-menu__item:hover {
+  background-color: #232638 !important;
+  color: #fff !important;
+}
+
 </style>
