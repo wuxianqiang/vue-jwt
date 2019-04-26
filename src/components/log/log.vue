@@ -1,5 +1,5 @@
 <template>
   <div>
-    日志
+    日志2
   </div>
 </template>

@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <svg :style="cls" aria-hidden="true">
-      <use :xlink:href="href" ></use>
-    </svg>
-  </div>
+  <svg :style="cls" aria-hidden="true">
+    <use :xlink:href="href" ></use>
+  </svg>
 </template>
 
 <script>
