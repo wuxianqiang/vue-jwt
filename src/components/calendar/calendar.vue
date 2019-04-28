@@ -76,7 +76,8 @@
           year: this.defaultYear,
           month: this.defaultMonth,
           date: this.defalutDate
-        }
+        },
+        titleList: ['一', '二', '三', '四', '五', '六', '日']
       }
     },
 
@@ -103,10 +104,6 @@
         }
         return ary
       }
-    },
-
-    created () {
-      this.titleList = ['一', '二', '三', '四', '五', '六', '日']
     },
 
     methods: {

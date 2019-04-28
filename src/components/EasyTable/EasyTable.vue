@@ -6,7 +6,7 @@
           <col
             v-for="(item, index) in titleList"
             :key="index"
-            :width="item.width?item.width:''"
+            :width="item.width ? item.width : ''"
             class="easy-table__col"/>
         </colgroup>
         <thead>

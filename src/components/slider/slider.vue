@@ -1,6 +1,6 @@
 <template>
   <div>
-    日志21
+    slider
   </div>
 </template>
 
