@@ -1,34 +1,20 @@
-# jwt
+# 用vue+element写的一个管理系统
 
-## Project setup
+### 安装依赖
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### 启动项目
 ```
 yarn run serve
 ```
 
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 在线预览
+See [项目地址](https://wuxianqiang.github.io/admin/).
 
 ### 主要功能
+1. 登录验证
 1. 手写组件
 2. 设置路由权限
 3. axios封装
