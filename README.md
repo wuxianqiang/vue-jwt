@@ -22,7 +22,8 @@ See [项目地址](https://wuxianqiang.github.io/admin/).
 5. 菜单的递归组件
 6. vuex状态分层
 7. 自定义指令（验证手机号码的指令）
-7. 过滤器和指令
+7. 全局过滤器的封装
+8. 全局指令的封装
 8. 面包屑导航
 9. easy-mock模拟数据
 10. session登录验证

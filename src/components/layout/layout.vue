@@ -15,7 +15,7 @@
             <img src="./avatar.jpg" alt="" width="70" height="70" class="home-container__user--img">
             <el-dropdown trigger="click" class="home-container__user--name">
               <span class="el-dropdown-link">
-                Qiang<i class="el-icon-arrow-down el-icon--right"></i>
+                Admin<i class="el-icon-arrow-down el-icon--right"></i>
               </span>
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item icon="el-icon-circle-close-outline">退出登录</el-dropdown-item>

@@ -2,7 +2,6 @@
   <div class="profile">
     <div class="profile-header">
       <div>
-        <a class="link link-add">表格</a>
         <a class="link link-add" @click="handleAdd">添加</a>
       </div>
       <easy-table :dataList="dataList" :titleList="titleList">
@@ -19,13 +18,12 @@
         @handleClose="handleClose"
         :title="title">
       </list-dialog>
-      <span @click="handleClick">跳转</span>
     </div>
   </div>
 </template>
 
 <script>
-import EasyTable from '@/components/EasyTable/EasyTable'
+import EasyTable from '@/components/easyTable/easyTable'
 import ListDialog from './userListDialog'
 
 export default {
@@ -144,6 +142,11 @@ export default {
 </script>
 
 <style lang="less">
+.profile {
+  background: #fff;
+  border-radius: 5px;
+  padding: 10px;
+}
 .link {
   color: #0a844b;
   font-weight: 800;

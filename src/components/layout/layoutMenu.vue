@@ -14,12 +14,14 @@
             </template>
             <template v-else>
               <el-menu-item :index="item.path" :key="item.auth">
+                <i :class="item.icon"></i>
                 {{ item.name }}
               </el-menu-item>
             </template>
           </template>
         </template>
         <el-menu-item :index="m.path" :key="m.auth" v-else>
+          <i :class="m.icon"></i>
           {{ m.name }}
         </el-menu-item>
       </template>
@@ -46,5 +48,11 @@ export default {
 <style lang="less">
   .el-menu-item.is-active {
     background-color: #232638 !important;
+  }
+  .menu-icon {
+    width: 24px;
+    height: 18px;
+    color: #fff !important;
+    font-size: 18px;
   }
 </style>

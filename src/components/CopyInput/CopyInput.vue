@@ -1,15 +1,12 @@
 <template>
-  <div>
-    <div class="copy-input">
-      <input
-        type="text"
-        class="copy-input__text"
-        ref="input"
-        readonly
-        v-model="link">
-        <i class="el-icon-document copy-input__icon" @click="handleClick" @mouseleave="handleLeave"></i>
-      
-    </div>
+  <div class="copy-input">
+    <input
+      type="text"
+      class="copy-input__text"
+      ref="input"
+      readonly
+      v-model="link">
+      <i class="el-icon-document copy-input__icon" @click="handleClick" @mouseleave="handleLeave"></i>
   </div>
 </template>
 
