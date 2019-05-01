@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="about-title">仓库地址：</p>
+    <p class="about-title" @click="handleClick">仓库地址：</p>
     <copy-input></copy-input>
   </div>
 </template>
@@ -11,6 +11,10 @@ import CopyInput from '@/components/copyInput/copyInput'
 export default {
   components: {
     CopyInput
+  },
+  methods: {
+    handleClick () {
+    }
   }
 }
 </script>

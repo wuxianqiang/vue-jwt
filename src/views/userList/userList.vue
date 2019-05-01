@@ -1,9 +1,20 @@
 <template>
   <div class="profile">
-    <div class="profile-header">
+    <base-dialog
+      :dialogVisible="dialogVisible"
+      @close="handleDialog"
+      :title="title">
       <div>
-        <a class="link link-add" @click="handleAdd">添加</a>
+        用户编号：{{ruleForm.id}}
       </div>
+      <div>
+        用户性别：{{ruleForm.sex}}
+      </div>
+      <div>
+        用户备注：{{ruleForm.count}}
+      </div>
+    </base-dialog>
+    <div class="profile-header">
       <easy-table :dataList="dataList" :titleList="titleList">
         <template v-slot:id="slotProps">
           <h1>
@@ -11,30 +22,27 @@
           </h1>
         </template>
       </easy-table>
-      <list-dialog
-        ref="dialog"
-        v-model="ruleForm"
-        @handleSubmit="handleSubmit"
-        @handleClose="handleClose"
-        :title="title">
-      </list-dialog>
     </div>
+    <span v-top="0" class="top">
+      <i class="el-icon-top"></i>
+    </span>
   </div>
 </template>
 
 <script>
 import EasyTable from '@/components/easyTable/easyTable'
-import ListDialog from './userListDialog'
+import BaseDialog from '@/components/baseDialog/baseDialog'
 
 export default {
   components: {
     EasyTable,
-    ListDialog
+    BaseDialog
   },
   data () {
     return {
       dataList: [],
-      title: '修改用户',
+      title: '修改提醒',
+      dialogVisible: false,
       ruleForm: {
         id: '',
         sex: 0,
@@ -44,7 +52,7 @@ export default {
   },
   created () {
     let list = []
-    for (let i = 1; i < 20; i++) {
+    for (let i = 1; i < 100; i++) {
       list.push({
         id: i,
         sex: Math.random() > 0.5 ? 0 : 1,
@@ -90,52 +98,21 @@ export default {
   methods: {
     // 删除
     handleDelete (item) {
-      this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
-      }).then(() => {
-        let index = this.dataList.findIndex(current => current.id === item.id)
-        if (index > -1) {
-          this.dataList.splice(index, 1)
-          this.$message({
-            type: 'success',
-            message: '删除成功!'
-          })
-        }
-      })
+      this.title = '删除提醒'
+      this.dialogVisible = true
+      this.ruleForm = item
     },
     // 修改
     handleChange (item) {
-      this.title = '修改用户'
-      this.ruleForm = {...item}
-      this.cache = this.dataList.findIndex(current => current.id === item.id)
-      this.$refs.dialog.show()
-    },
-
-    handleAdd () {
-      this.title = '添加用户'
-      this.$refs.dialog.show()
-    },
-
-    handleSubmit () {
-      let { id, sex, count } = this.ruleForm
-      if (this.cache > -1) {
-        this.dataList.splice(this.cache, 1, { id, sex, count })
-      } else {
-        this.dataList.push({ id, sex, count })
-      }
-    },
-    handleClose () {
-      this.cache = -1
-      this.ruleForm = {
-        id: this.dataList.length + 1,
-        sex: 1,
-        count: ''
-      }
+      this.title = '修改提醒'
+      this.dialogVisible = true
+      this.ruleForm = item
     },
     handleClick () {
       this.$router.push({name:'Log',params:{id:100}})
+    },
+    handleDialog () {
+      this.dialogVisible = false
     }
   }
 }
@@ -158,5 +135,15 @@ export default {
   display: inline-block;
   background: rgba(1,126,102,0.08);
   margin-bottom: 10px;
+}
+.top {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background: #7a6e6e;
+  font-size: 20px;
+  padding: 10px;
+  color: #fff;
 }
 </style>

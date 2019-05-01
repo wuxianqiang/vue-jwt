@@ -22,7 +22,7 @@ export default {
     handleClick () {
       this.$refs.input.select()
       document.execCommand('copy')
-      this.$message.success('复制成功')
+      this.$prompt.success('复制成功 ！')
     },
     handleLeave () {
     }

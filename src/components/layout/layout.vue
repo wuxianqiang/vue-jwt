@@ -33,7 +33,7 @@
           <layout-menu></layout-menu>
         </div>
       </div>
-      <div class="home-container__content">
+      <div class="home-container__content" id="content">
         <layout-bread></layout-bread>
         <div class="home-container__view">
           <router-view></router-view>
