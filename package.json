@@ -18,6 +18,8 @@
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "semver": "^6.0.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
     "v-charts": "^1.19.0",
     "vue": "^2.6.6",
     "vue-router": "^3.0.1",

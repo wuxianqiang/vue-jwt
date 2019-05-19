@@ -41,27 +41,17 @@
               v-for="(title, index) in titleList"
               :key="index"
               class="easy-table__td">
-              <span>
-                <!-- 可以处理文本 -->
+              <template>
                 <span v-if="title.filter">
                   {{title.filter(value)}}
                 </span>
                 <span v-else >
-                  <slot :name="title.key" :row="value">
-                    {{value[title.key]}}
-                  </slot>
+                  {{value[title.key]}}
                 </span>
-              </span>
-              <span v-if="title.key==='html'">
-                <!-- 可以帮到HTML -->
-                <span
-                  v-for="(item, index) in title.htmlArray"
-                  :key="index"
-                  v-html="item.htmlString"
-                  @click="()=>item.clickEvent(value)"
-                >
-                </span>
-              </span>
+              </template>
+              <template v-if="title.render">
+                <render-table :render="title.render" :column="value"></render-table>
+              </template>
             </td>
           </tr>
         </thead>
@@ -71,7 +61,11 @@
 </template>
 
 <script>
+import renderTable from './renderTable'
 export default {
+  components: {
+    renderTable
+  },
   props: {
     titleList: {
       type: Array,

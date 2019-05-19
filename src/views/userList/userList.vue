@@ -4,15 +4,9 @@
       :dialogVisible="dialogVisible"
       @close="handleDialog"
       :title="title">
-      <div>
-        用户编号：{{ruleForm.id}}
-      </div>
-      <div>
-        用户性别：{{ruleForm.sex}}
-      </div>
-      <div>
-        用户备注：{{ruleForm.count}}
-      </div>
+      <div>用户编号：{{ruleForm.id}}</div>
+      <div>用户性别：{{ruleForm.sex}}</div>
+      <div>用户备注：{{ruleForm.count}}</div>
     </base-dialog>
     <div class="profile-header">
       <easy-table :dataList="dataList" :titleList="titleList">
@@ -23,9 +17,6 @@
         </template>
       </easy-table>
     </div>
-    <span v-top="0" class="top">
-      <i class="el-icon-top"></i>
-    </span>
   </div>
 </template>
 
@@ -68,7 +59,6 @@ export default {
       {
         key: 'sex',
         text: '用户性别',
-        // 表格提供过来数据的方法
         filter: (item) => {
           return item.sex ? '男' : '女'
         }
@@ -77,21 +67,16 @@ export default {
         key: 'count',
         text: '用户备注'
       },
-      // 表格提供插入HTML元素的方法
       {
         key: 'html',
         text: '操作',
         width: 150,
-        htmlArray: [
-          {
-            htmlString: '<a class="link">修改</a>',
-            clickEvent: this.handleChange
-          },
-          {
-            htmlString: '<a class="link">删除</a>',
-            clickEvent: this.handleDelete
+        render (h, column) {
+          let handlerClick = () => {
+            this.handleDelete(column)
           }
-        ]
+          return <el-button on-click={handlerClick}>删除</el-button>
+        },
       }
     ]
   },

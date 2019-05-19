@@ -47,7 +47,7 @@
 // import { getUser } from '../api/user.js'
 import LayoutMenu from './layoutMenu'
 import LayoutBread from './layoutBread'
-import Icon from '@/components/Icon/Icon'
+import Icon from '@/components/icon/icon'
 
 export default {
   components: {
