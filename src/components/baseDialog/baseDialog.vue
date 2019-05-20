@@ -4,7 +4,7 @@
       <div class="dialog-wrapper">
         <div class="dialog-wrapper__title">
           <div>{{title}}</div>
-          <a href="javascirpt:;" @click="handleClick(false)">
+          <a href="javascirpt:;" @click="handleClose">
             <i class="el-icon-close"></i>
           </a>
         </div>
@@ -12,8 +12,10 @@
           <slot></slot>
         </div>
         <div class="dialog-wrapper__footer">
-          <button class="dialog-wrapper__btn" @click="handleClick(true)">确定</button>
-          <button class="dialog-wrapper__btn" @click="handleClick(false)">取消</button>
+          <slot name="footer">
+            <a href="javascript:;" @click="handleClose">确定</a>
+            <a href="javascript:;" @click="handleClose" class="dialog-wrapper__close">取消</a>
+          </slot>
         </div>
       </div>
     </div>
@@ -35,8 +37,8 @@ export default {
   },
 
   methods: {
-    handleClick (flag) {
-      this.$emit('close', flag)
+    handleClose () {
+      this.$emit('update:dialogVisible', false)
     }
   }
 }
@@ -79,15 +81,8 @@ export default {
       text-align: right;
     }
 
-    &__btn {
-      display: inline-block;
-      outline: none;
-      border: none;
-      width: 40px;
-      height: 33px;
-      background: #0a844b;
-      margin-left: 20px;
-      color: #fff;
+    &__close {
+      margin-left: 15px;
     }
   }
 }

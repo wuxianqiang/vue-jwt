@@ -1,8 +1,7 @@
 <template>
   <div class="profile">
     <base-dialog
-      :dialogVisible="dialogVisible"
-      @close="handleDialog"
+      :dialogVisible.sync="dialogVisible"
       :title="title">
       <div>用户编号：{{ruleForm.id}}</div>
       <div>用户性别：{{ruleForm.sex}}</div>
@@ -86,18 +85,6 @@ export default {
       this.title = '删除提醒'
       this.dialogVisible = true
       this.ruleForm = item
-    },
-    // 修改
-    handleChange (item) {
-      this.title = '修改提醒'
-      this.dialogVisible = true
-      this.ruleForm = item
-    },
-    handleClick () {
-      this.$router.push({name:'Log',params:{id:100}})
-    },
-    handleDialog () {
-      this.dialogVisible = false
     }
   }
 }
